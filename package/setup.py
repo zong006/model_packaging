@@ -6,7 +6,7 @@ from pathlib import Path
 from setuptools import find_packages, setup
 
 # Package meta-data.
-NAME = 'sample_classification_model'
+NAME = 'TitanicSurvivalModel100424'
 DESCRIPTION = "sample Classification model package."
 URL = "https://github.com/zong006/model_packaging"
 EMAIL = "sample_email@gmail.com"
