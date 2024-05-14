@@ -7,8 +7,8 @@ from sklearn.metrics import accuracy_score
 def test_make_prediction(sample_input_data):
     """
     The argument sample_input_data is a fixture from conftest.py,
-    where the return value of sample_input_data is train_data 
-    i.e., treat sample_input_data logically as train_data.
+    where the return value of sample_input_data is test_data 
+    i.e., treat sample_input_data logically as test_data.
     """
     # Given
     expected_no_predictions = 179

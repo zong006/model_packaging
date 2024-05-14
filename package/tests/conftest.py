@@ -26,6 +26,6 @@ def sample_input_data():
         test_size=config.model_config.test_size,
         random_state=config.model_config.random_state,
     )
-    train_data = X_test
+    test_data = X_test
     
-    return train_data
+    return test_data

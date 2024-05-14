@@ -5,8 +5,8 @@ from classification_model.processing.features import ExtractLetterTransformer
 def test_extract_letter_transformer(sample_input_data):
     """
     The argument sample_input_data is a fixture from conftest.py,
-    where the return value of sample_input_data is train_data 
-    i.e., treat sample_input_data logically as train_data.
+    where the return value of sample_input_data is test_data 
+    i.e., treat sample_input_data logically as test_data.
     """
     # Given
     transformer = ExtractLetterTransformer(
