@@ -12,7 +12,7 @@ def sample_input_data():
     essentially telling pytest that this function provides a resource
     that can be used by other test functions.
 
-    The return value train_data is used when sample_input_data is used as an argument
+    The return value test_data is used when sample_input_data is used as an argument
     in another function.
 
     This function sample_input_data is used in test_features.py for assertion.
