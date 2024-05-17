@@ -12,44 +12,12 @@ from classification_model import __version__ as _version
 from classification_model.config.core import DATASET_DIR, TRAINED_MODEL_DIR, config
 
 
-def get_first_cabin(row) -> Union[str, float]:
-    try:
-        return row.split()[0]
-    except:
-        return np.nan
-    
-
-def get_title(passenger: str) -> str:
-    line = passenger
-    if re.search('Mrs', line):
-        return 'Mrs'
-    elif re.search('Mr', line):
-        return 'Mr'
-    elif re.search('Miss', line):
-        return 'Miss'
-    elif re.search('Master', line):
-        return 'Master'
-    else:
-        return 'Other'
-
-
 def load_dataset(*, file_name: str) -> pd.DataFrame:
     try:
         dataframe = pd.read_csv(Path(f"{DATASET_DIR}/{file_name}"))
     except:
         dataframe = pd.read_csv(file_name)
-    dataframe = dataframe.replace('?', np.nan)
-
-    dataframe['Cabin'] = dataframe['Cabin'].apply(get_first_cabin)
-    dataframe['Title'] = dataframe['Name'].apply(get_title)
-
-    dataframe["Fare"] = dataframe["Fare"].astype("float")
-    dataframe["Age"] = dataframe["Age"].astype("float")
-    dataframe["Pclass"] = dataframe["Pclass"].astype("float")
-
-    dataframe.drop(labels=config.model_config.to_drop, axis=1, inplace=True)
-
-
+    
     return dataframe
 
 

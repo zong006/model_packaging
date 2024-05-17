@@ -48,6 +48,15 @@ numerical_vars:
 cabin:
   - Cabin
 
-to_drop:
+cols_to_drop:
   - Name
   - Ticket
+  - PassengerId
+
+name_title:
+  - Name
+
+convert_to_float:
+  - Fare
+  - Age
+  - Pclass

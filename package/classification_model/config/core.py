@@ -38,7 +38,9 @@ class ModelConfig(BaseModel):
     categorical_vars: List[str]
     numerical_vars: List[str]
     cabin: List[str]
-    to_drop: List[str]
+    cols_to_drop: List[str]
+    name_title: List[str]
+    convert_to_float: List[str]
 
 class Config(BaseModel):
     """Master config object."""

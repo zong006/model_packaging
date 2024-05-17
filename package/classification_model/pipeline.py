@@ -8,7 +8,18 @@ from classification_model.config.core import config
 from classification_model.processing import features as pp
 
 titanic_pipe = Pipeline(
-    [
+    [   
+        # ==== INITIAL PREPROCESSING ====  
+        ('replace_?_w_nan', pp.ReplaceWithNan()),
+        
+        ('get_first_cabin', pp.GetFirstCabin(variables=config.model_config.cabin)),
+
+        ('get_title', pp.GetTitle(variables=config.model_config.name_title)),
+        
+        ('convert_to_float', pp.DTypeTransformer_Float(variables=config.model_config.convert_to_float)),
+        
+        ('drop_cols', pp.DropColumns(variables=config.model_config.cols_to_drop)),
+
         # ===== IMPUTATION =====
         # impute categorical variables with string missing
         (
