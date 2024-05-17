@@ -1,3 +1,7 @@
 *.pyc
 venv/
 *.ipynb_checkpoints
+*.DS_Store
+.tox 
+dist/
+build/
