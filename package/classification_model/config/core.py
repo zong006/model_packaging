@@ -4,10 +4,10 @@ from typing import List, Optional
 from pydantic import BaseModel
 from strictyaml import YAML, load
 
-import classification_model
-
 # Project Directories
-PACKAGE_ROOT = Path(classification_model.__file__).resolve().parent
+script_path = Path(__file__).resolve().parent
+
+PACKAGE_ROOT = script_path.parent
 ROOT = PACKAGE_ROOT.parent
 CONFIG_FILE_PATH = PACKAGE_ROOT / "config.yml"
 DATASET_DIR = PACKAGE_ROOT / "datasets"
@@ -82,6 +82,5 @@ def create_and_validate_config(parsed_config: YAML = None) -> Config:
     )
 
     return _config
-
 
 config = create_and_validate_config()

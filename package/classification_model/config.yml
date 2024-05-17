@@ -3,7 +3,6 @@ package_name: classification_model
 
 # Data Files
 training_data_file: titanic_train.csv
-test_data_file: test.csv
 
 pipeline_name: classification_model
 pipeline_save_file: classification_model_output_v
