@@ -21,7 +21,7 @@ def sample_input_data():
     # data is a preprocessed dataframe. 
     # see ../classification_model/processing/data_manager, load_dataset function
     X_train, X_test, y_train, y_test = train_test_split(
-        data,  # return features + target as X_test
+        data,  # return config.model_config.input_features + config.model_config.target as X_test
         data[config.model_config.target],
         test_size=config.model_config.test_size,
         random_state=config.model_config.random_state,
