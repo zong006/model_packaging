@@ -4,7 +4,6 @@ from typing import List, Optional
 from pydantic import BaseModel
 from strictyaml import YAML, load
 
-# Project Directories
 script_path = Path(__file__).resolve().parent
 
 PACKAGE_ROOT = script_path.parent
@@ -13,12 +12,10 @@ CONFIG_FILE_PATH = PACKAGE_ROOT / "config.yml"
 DATASET_DIR = PACKAGE_ROOT / "datasets"
 TRAINED_MODEL_DIR = PACKAGE_ROOT / "trained_models"
 
-
 class AppConfig(BaseModel):
     """
     Application-level config.
     """
-
     package_name: str
     training_data_file: str
     pipeline_save_file: str
@@ -29,7 +26,6 @@ class ModelConfig(BaseModel):
     All configuration relevant to model
     training and feature engineering.
     """
-
     target: str
     features: List[str]
     test_size: float
@@ -80,7 +76,6 @@ def create_and_validate_config(parsed_config: YAML = None) -> Config:
         app_config=AppConfig(**parsed_config.data),
         model_config=ModelConfig(**parsed_config.data),
     )
-
     return _config
 
 config = create_and_validate_config()
