@@ -41,6 +41,7 @@ class ModelConfig(BaseModel):
     cols_to_drop: List[str]
     name_title: List[str]
     convert_to_float: List[str]
+    input_features: List[str]
 
 class Config(BaseModel):
     """Master config object."""
