@@ -12,7 +12,7 @@ def drop_na_inputs(*, input_data: pd.DataFrame) -> pd.DataFrame:
     validated_data = input_data.copy()
     new_vars_with_na = [
         var
-        for var in config.model_config.features
+        for var in config.model_config.input_features
         if var
         not in config.model_config.categorical_vars
         + config.model_config.cabin
@@ -28,11 +28,8 @@ def drop_na_inputs(*, input_data: pd.DataFrame) -> pd.DataFrame:
 def validate_inputs(*, input_data: pd.DataFrame) -> Tuple[pd.DataFrame, Optional[dict]]:
     """Check model inputs for unprocessable values."""
 
-    input_data["Fare"] = input_data["Fare"].astype("float")
-    input_data["Age"] = input_data["Age"].astype("float")
-    input_data["Pclass"] = input_data["Pclass"].astype("float")
-
-    relevant_data = input_data[config.model_config.features].copy()
+    relevant_data = input_data[config.model_config.input_features].copy()
+    
     validated_data = drop_na_inputs(input_data=relevant_data)
     errors = None
 

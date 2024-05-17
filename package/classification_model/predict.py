@@ -22,7 +22,7 @@ def make_prediction(*, input_data: t.Union[pd.DataFrame, dict]) -> dict:
     
     if not errors:
         predictions = _titanic_pipe.predict(
-            X=validated_data[config.model_config.features]
+            X=validated_data[config.model_config.input_features]
         )
         results = {
             "predictions": predictions,  # type: ignore
