@@ -27,16 +27,38 @@ Contains and organizes the files for model packaging into PyPI.
 
 #### To Retrain A Model And Update The Package
 - go to classification_model/VERSION and update the version number. 
-- run tox -e train. This runs the training pipeline and saves an updated model in a .pkl file with the 
+- run "tox -e train". This runs the training pipeline and saves an updated model in a .pkl file with the 
 new version number according to classification_model/VERSION
 - clear the build cache by running rm -rf build dist *.egg-info
 - upload to PyPI: 
-    - python setup.py sdist bdist_wheel
-    - twine upload dist/*
+    - "python setup.py sdist bdist_wheel"
+    - "twine upload dist/*"
 
+#### To Evaluate The Model
+- run "tox -e test_package". This evaluates if the model is working as intended as well as the accuracy using 
+sklearn classification metrics.
 
 ## 2. classification_api
+A simple interface for now, with two API endpoints:
+- /predict
+- /health
+Other files include
+- tox.ini
+- Procfile
 
+#### API's
+- /health shows if the server is functioning properly.
+- /predict uses the make_prediction function from the classification_model package which takes in raw inputs 
+and returns a prediction.
+
+#### Running and Testing the API
+- Running:
+    - run "tox -e run run" which starts up the local server at localhost:8002. 
+- Testing
+    - run "tox -e test_app". This checks if the model is producing valid outputs, and if it is still accurate. Similar to 
+    test_package function in the packaging phase.
+
+#### Procfile
 
 
 
