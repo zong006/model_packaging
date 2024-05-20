@@ -1,10 +1,8 @@
-Assignment Task for Section05 of "Deployment of Machine Learning Models" on Udemy.
-Link: https://www.udemy.com/course/deployment-of-machine-learning-models/?couponCode=KEEPLEARNING
-
-
 # File/Directory Descriptions (WIP)
 
-## 1. package
+## 1. package 
+Assignment Task for Section05 of "Deployment of Machine Learning Models" on Udemy.
+Link: https://www.udemy.com/course/deployment-of-machine-learning-models/?couponCode=KEEPLEARNING
 Contains and organizes the files for model packaging into PyPI. 
 - tox.ini
 - build files
@@ -59,7 +57,10 @@ and returns a prediction.
     test_package function in the packaging phase.
 
 #### Procfile
-
+Tells the deployment platform to start a web server using Uvicorn, serving the application defined in app.main:app, and to listen on all network interfaces at the port specified by the environment variable $PORT. 
+A simple test deployment will be via Railway
+- railway init -> railway link -> railway up
+- go to Settings, generate the web domain and go to the url. Use it as per running the API with tox.
 
 
 # First Trial Run
