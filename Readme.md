@@ -58,9 +58,9 @@ and returns a prediction.
 
 #### Procfile
 Tells the deployment platform to start a web server using Uvicorn, serving the application defined in app.main:app, and to listen on all network interfaces at the port specified by the environment variable $PORT. 
-A simple test deployment will be via Railway
+A simple test deployment will be via Railway 
 - railway init -> railway link -> railway up
-- go to Settings, generate the web domain and go to the url. Use it as per running the API with tox.
+- go to Settings of the project (not of the service), generate the web domain and go to the url. Use it as per running the API with tox.
 
 
 # First Trial Run
