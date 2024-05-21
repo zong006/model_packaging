@@ -72,7 +72,11 @@ A simple test deployment will be via Railway
 
 
 ## 3. CI/CD via Github Actions
+The process so far has been manual. Whenever there is an update such as retraining a model, or any updates to the api or package, commands have to be run manually. Now, the task is to automate these processes such that whenever there is any update to the files and pushed to github, the following happens:
+- a process to run tests are triggered. This checks if the changes made will cause the code to break.
+- deployment to railway is triggered automatically.
+These can be done through Github actions by including a workflow .yml file. Keys from railway also have to be added as environment variables to the Github repo.
 
-
+#### Workflows .yml File
 
 
