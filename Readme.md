@@ -36,6 +36,12 @@ new version number according to classification_model/VERSION
 - run "tox -e test_package". This evaluates if the model is working as intended as well as the accuracy using 
 sklearn classification metrics.
 
+#### First Trial Run
+- run "tox -e train" from the package directory. This trains up a model and saves the pipeline into a .pkl file under "classification_model/trained_models"
+- go to the package directory and run "pip install .". This treats the package folder containing setup.py and MANIFEST.in as a package to be installed and used in scripts.
+- run "python main.py", where a sample input is a .csv file with a single row having same features as the raw dataset. This file is loaded and fed into the persisted pipeline, producing an output.
+- More thorough handling of missing values have to be considered, but the package works as intended.
+
 ## 2. classification_api
 A simple interface for now, with two API endpoints:
 - /predict
@@ -58,18 +64,19 @@ and returns a prediction.
 
 #### Procfile
 Tells the deployment platform to start a web server using Uvicorn, serving the application defined in app.main:app, and to listen on all network interfaces at the port specified by the environment variable $PORT. 
+
+#### Testing The Deployment
 A simple test deployment will be via Railway 
 - railway init -> railway link -> railway up
 - go to Settings of the project (not of the service), generate the web domain and go to the url. Use it as per running the API with tox.
 
 
-# First Trial Run
-- run "tox -e train" from the package directory. This trains up a model and saves the pipeline into a .pkl file under "classification_model/trained_models"
-- go to the package directory and run "pip install .". This treats the package folder containing setup.py and MANIFEST.in as a package to be installed and used in scripts.
-- run "python main.py", where a sample input is a .csv file with a single row having same features as the raw dataset. This file is loaded and fed into the persisted pipeline, producing an output.
-- More thorough handling of missing values have to be considered.
+## 3. CI/CD via Github Actions
+The process so far has been manual. Whenever there is an update such as retraining a model, or any updates to the api or package, commands have to be run manually. Now, the task is to automate these processes such that whenever there is any update to the files and pushed to github, the following happens:
+- a process to run tests are triggered. This checks if the changes made will cause the code to break.
+- deployment to railway is triggered automatically.
+These can be done through Github actions by including a workflow .yml file. Keys from railway also have to be added as environment variables to the Github repo.
 
-
-
+#### Workflows .yml File
 
 
