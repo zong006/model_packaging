@@ -12,7 +12,7 @@ on:
   workflow_dispatch:
 
 jobs:
-    test_app:
+    classification_api_test_app:
       runs-on: ubuntu-latest
       steps:
         - name: Checkout code
@@ -43,25 +43,25 @@ jobs:
             cd classification_api
             tox
 
-  # deploy_to_railway:
-  #   runs-on: ubuntu-latest
-  #   needs: section_07_test_app
-  #   steps:
-  #   - name: Checkout
-  #     uses: actions/checkout@v2
-      
-  #   - name: Use Node 16
-  #     uses: actions/setup-node@v2
-  #     with:
-  #       node-version: '16.x'
+    deploy_to_railway:
+      runs-on: ubuntu-latest
+      needs: classification_api_test_app
+      steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        
+      - name: Use Node 16
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
 
-  #   - name: Install Railway CLI
-  #     run: npm install -g @railway/cli
+      - name: Install Railway CLI
+        run: npm install -g @railway/cli
 
-  #   - name: Deploy to Railway
-  #     run: |
-  #       cd section-07-ci-and-publishing/house-prices-api
-  #       railway up --service ${{ secrets.RAILWAY_SERVICE_ID }} --detach
-  #     env:
-  #       RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+      - name: Deploy to Railway
+        run: |
+          cd section-07-ci-and-publishing/house-prices-api
+          railway up --service ${{ secrets.RAILWAY_SERVICE_ID_TITANIC }} --detach
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TITANIC_PROJ_TOKEN }}
         
