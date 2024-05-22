@@ -12,41 +12,36 @@ on:
   workflow_dispatch:
 
 jobs:
-    print_working_dir:
+    test_app:
       runs-on: ubuntu-latest
       steps:
-        - name: print working dir
-          run: echo $PWD
-  # section_07_test_app:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v2
+        - name: Checkout code
+          uses: actions/checkout@v2
 
-  #     - name: Setup Python
-  #       uses: actions/setup-python@v2
-  #       with:
-  #         python-version: '3.11.1'
+        - name: Setup Python
+          uses: actions/setup-python@v2
+          with:
+            python-version: '3.11.1'
 
-  #     - name: Create venv
-  #       run: |
-  #         python -m venv deploying-machine-learning-models/venv
-  #         source deploying-machine-learning-models/venv/bin/activate
-  #         pip install --upgrade pip
+        - name: Create venv
+          run: |
+            python -m venv model_packaging/venv
+            source model_packaging/venv/bin/activate
+            pip install --upgrade pip
 
-  #     - name: Create venv
-  #       run: |
-  #         python -m venv venv
-  #         . venv/bin/activate
-  #         pip install --upgrade pip
+        - name: Create venv
+          run: |
+            python -m venv venv
+            . venv/bin/activate
+            pip install --upgrade pip
 
-  #     - name: Install tox
-  #       run: pip install --user tox
+        - name: Install tox
+          run: pip install --user tox
 
-  #     - name: Running app tests
-  #       run: |
-  #         cd section-07-ci-and-publishing/house-prices-api
-  #         tox
+        - name: Running app tests
+          run: |
+            cd classification_api
+            tox
 
   # deploy_to_railway:
   #   runs-on: ubuntu-latest
