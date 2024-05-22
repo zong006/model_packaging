@@ -60,7 +60,7 @@ jobs:
 
       - name: Deploy to Railway
         run: |
-          cd section-07-ci-and-publishing/house-prices-api
+          cd classification_api
           railway up --service ${{ secrets.RAILWAY_SERVICE_ID_TITANIC }} --detach
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TITANIC_PROJ_TOKEN }}
