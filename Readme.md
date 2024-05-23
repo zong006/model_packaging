@@ -27,9 +27,9 @@ Contains and organizes the files for model packaging into PyPI.
 - go to classification_model/VERSION and update the version number. 
 - run "tox -e train". This runs the training pipeline and saves an updated model in a .pkl file with the 
 new version number according to classification_model/VERSION
-- clear the build cache by running rm -rf build dist *.egg-info
+- clear the build cache by running "rm -rf build dist *.egg-info"
 - upload to PyPI: 
-    - "python setup.py sdist bdist_wheel"
+    - "python -m build"
     - "twine upload dist/*"
 
 #### To Evaluate The Model
@@ -81,6 +81,10 @@ These can be done through Github actions by including a workflow .yml file. Keys
 There are two workflow files specifying jobs to be triggered by:
 - pushing to Github. This will be in-between versions to check if any changes breaks the code. 
     - triggers jobs defined in push.yml: test the app api -> deploy to railway
-- releasing a new version tag. This is when incremental changes results in a new version.
-    - triggers job defined in tag.yml: test the app api -> publish to PyPI -> deploy to railway 
+- releasing a new version tag. Set it to happen when a new tag is released. For clarity, do the following:
+    - create a new branch "update_pkg_version"
+    -  increment the version number manually under package/classification_model/VERSION
+    - push changes to github 
+    - release a new tag with version number according to the package/classification_model/VERSION file
+        - triggers jobs defined in update_package.yml: build package -> publish to PyPI 
 
