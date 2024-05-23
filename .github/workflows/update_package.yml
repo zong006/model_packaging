@@ -31,10 +31,6 @@ jobs:
         rm -rf build dist *.egg-info
         python -m build
 
-    - name: Debug List directory contents
-      run: |
-        ls -la dist      
-
     - name: Store the distribution packages
       uses: actions/upload-artifact@v3
       with:
