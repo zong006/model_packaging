@@ -2,15 +2,9 @@ name: CI/CD Pipeline (tags)
 
 on:
   push:
-    tags:
-      - '*'
-# uncomment when finalized
-# on:
-#     push:
-#       branches:
-#         - main
-#         - update_workflow
-
+    branches:
+      - main
+      - update_model
 
 jobs:
     fetch_data:

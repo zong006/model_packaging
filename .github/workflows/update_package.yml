@@ -3,9 +3,9 @@ name: Publish Python 🐍 distribution 📦 to PyPI and GitHub Release
 on:
   push:
     branches:
-      - main
       - update_pkg_version
-
+    tags:
+      - '*'
 jobs:
   build:
     name: Build distribution 📦
@@ -30,10 +30,6 @@ jobs:
       run: |
         rm -rf build dist *.egg-info
         python -m build
-
-    - name: Debug List directory contents
-      run: |
-        ls -la dist      
 
     - name: Store the distribution packages
       uses: actions/upload-artifact@v3
