@@ -29,7 +29,7 @@ jobs:
             source model_packaging/venv/bin/activate
             pip install --upgrade pip
             
-        - name: Set KAGGLE_CONFIG_DIR
+        - name: Set KAGGLE_CONFIG_DIR #set where kaggle looks for api credentials to download dataset
           run: |
             echo "KAGGLE_CONFIG_DIR=/home/runner/tmp/.kaggle" >> "$GITHUB_ENV"
         - name: Download dataset
@@ -40,9 +40,8 @@ jobs:
             chmod 600 /home/runner/tmp/.kaggle/kaggle.json
             cat $GITHUB_ENV
             echo "KAGGLE_CONFIG_DIR is ${{ env.KAGGLE_CONFIG_DIR }}"
-
             
-          # kaggle competitions download titanic -p package/classification_model/datasets
+            kaggle competitions download titanic -p package/classification_model/datasets
 
         # - name: Install tox
         #   run: pip install --user tox
