@@ -21,7 +21,7 @@ jobs:
       
       - name: Update version number
         run: |
-          # Assuming you're in the directory containing classification_model/VERSION file
+          cd package/classification_model
           VERSION=$(cat classification_model/VERSION)
           MAJOR=$(echo $VERSION | cut -d. -f1)
           MINOR=$(echo $VERSION | cut -d. -f2)
@@ -30,13 +30,13 @@ jobs:
           NEW_VERSION="$MAJOR.$MINOR.$PATCH"
           echo $NEW_VERSION > classification_model/VERSION
       
-      - name: Run training pipeline
-        run: tox -e train
+    #   - name: Run training pipeline
+    #     run: tox -e train
       
-      - name: Clear build cache
-        run: rm -rf build dist *.egg-info
+    #   - name: Clear build cache
+    #     run: rm -rf build dist *.egg-info
       
-      - name: Create and publish release
-        run: |
-          python setup.py sdist bdist_wheel
-          twine upload dist/*
+    #   - name: Create and publish release
+    #     run: |
+    #       python setup.py sdist bdist_wheel
+    #       twine upload dist/*
