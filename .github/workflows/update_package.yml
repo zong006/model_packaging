@@ -3,7 +3,6 @@ name: Publish Python 🐍 distribution 📦 to PyPI and GitHub Release
 on:
   push:
     branches:
-      - main
       - update_pkg_version
     tags:
       - '*'
