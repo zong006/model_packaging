@@ -1,0 +1,39 @@
+name: CI/CD Pipeline (tags)
+
+on:
+  push:
+    branches:
+      - main
+      - update_model
+
+jobs:
+    fetch_data:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v2
+
+        - name: Setup Python
+          uses: actions/setup-python@v2
+          with:
+            python-version: '3.11.1'
+
+        - name: Create venv
+          run: |
+            python -m venv model_packaging/venv
+            source model_packaging/venv/bin/activate
+            pip install --upgrade pip
+            
+        - name: Set KAGGLE_CONFIG_DIR 
+        # set where kaggle looks for api credentials to download dataset
+        # must be in a seperate step
+          run: |
+            echo "KAGGLE_CONFIG_DIR=/home/runner/tmp/.kaggle" >> "$GITHUB_ENV"
+            
+        - name: Download dataset
+          run: | 
+            pip install kaggle 
+            mkdir -p /home/runner/tmp/.kaggle
+            echo '{"username":"${{ secrets.KAGGLE_USERNAME }}","key":"${{ secrets.KAGGLE_KEY }}"}' > /home/runner/tmp/.kaggle/kaggle.json
+            chmod 600 /home/runner/tmp/.kaggle/kaggle.json
+            kaggle competitions download titanic -p package/classification_model/datasets
