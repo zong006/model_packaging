@@ -35,7 +35,6 @@ jobs:
         - name: Download dataset
           run: | 
             pip install kaggle 
-            echo "export KAGGLE_CONFIG_DIR=/tmp/.kaggle" >> $GITHUB_ENV
             mkdir -p /home/runner/tmp/.kaggle
             echo '{"username":"${{ secrets.KAGGLE_USERNAME }}","key":"${{ secrets.KAGGLE_KEY }}"}' > /home/runner/tmp/.kaggle/kaggle.json
             chmod 600 /home/runner/tmp/.kaggle/kaggle.json
