@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - update_workflow_pkg_workflow
+      - update_pkg_workflow
 
 jobs:
   build:
