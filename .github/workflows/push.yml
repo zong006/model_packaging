@@ -39,7 +39,7 @@ jobs:
             echo '{"username":"${{ secrets.KAGGLE_USERNAME }}","key":"${{ secrets.KAGGLE_KEY }}"}' > /home/runner/tmp/.kaggle/kaggle.json
             chmod 600 /home/runner/tmp/.kaggle/kaggle.json
             echo "export KAGGLE_CONFIG_DIR=/home/runner/tmp/.kaggle" >> $GITHUB_ENV
-            echo "KAGGLE_CONFIG_DIR is $KAGGLE_CONFIG_DIR"
+            echo "KAGGLE_CONFIG_DIR is ${{ env.KAGGLE_CONFIG_DIR }}"
 
             
           # kaggle competitions download titanic -p package/classification_model/datasets
