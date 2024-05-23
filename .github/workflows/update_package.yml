@@ -20,12 +20,13 @@ jobs:
 
     - name: Install build dependencies
       run: |
-        cd package
         python -m pip install --upgrade pip
         pip install build --user
 
     - name: Build a binary wheel and a source tarball
-      run: python -m build
+      run: |
+        cd package
+        python -m build
 
     - name: Store the distribution packages
       uses: actions/upload-artifact@v3
