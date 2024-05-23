@@ -24,17 +24,8 @@ jobs:
             python-version: '3.11.1'
 
         - name: Create venv
-          run: |
-            python -m venv model_packaging/venv
-            source model_packaging/venv/bin/activate
-            pip install --upgrade pip
-
-        - name: Create venv
-          run: |
-            python -m venv venv
-            . venv/bin/activate
-            pip install --upgrade pip
-
+          uses: ./.github/workflows/common.yml@prepare_venv
+            
         - name: Install tox
           run: pip install --user tox
 
