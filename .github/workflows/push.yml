@@ -34,8 +34,8 @@ jobs:
         #     echo ${{ secrets.KAGGLE_API_KEY }} > /tmp/kaggle.json 
         #     kaggle config set -n path -v /tmp
         #     kaggle competitions download titanic -p datasets
-        - name: 
-          run: cd code
+        - name: Download dataset
+          run: cd package/classification_model/datasets
 
         - name: Install tox
           run: pip install --user tox
