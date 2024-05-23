@@ -29,13 +29,13 @@ jobs:
             source model_packaging/venv/bin/activate
             pip install --upgrade pip
             
-        # - name: Configure Kaggle API
-        #   run: | 
-        #     echo ${{ secrets.KAGGLE_API_KEY }} > /tmp/kaggle.json 
-        #     kaggle config set -n path -v /tmp
-        #     kaggle competitions download titanic -p datasets
         - name: Download dataset
-          run: cd package/classification_model/datasets
+          run: | 
+            echo ${{ secrets.KAGGLE_API_KEY }} > /tmp/kaggle.json 
+            kaggle config set -n path -v /tmp
+            kaggle competitions download titanic -p package/classification_model/datasets
+        # - name: Download dataset
+        #   run: cd package/classification_model/datasets
 
         - name: Install tox
           run: pip install --user tox
