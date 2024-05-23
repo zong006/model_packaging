@@ -5,7 +5,8 @@ on:
     branches:
       - main
       - update_pkg_version
-
+    tags:
+      - '*'
 jobs:
   build:
     name: Build distribution 📦
