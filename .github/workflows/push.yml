@@ -5,10 +5,10 @@ on:
     branches:
       - main
       - update_workflow
-  # pull_request:
-  #   branches:
-  #     - main
-  #     - update
+  pull_request:
+    branches:
+      - main
+      - update
   workflow_dispatch:
 
 jobs:
