@@ -10,6 +10,9 @@ jobs:
   build:
     name: Build distribution 📦
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: package
 
     steps:
     - uses: actions/checkout@v4
@@ -25,13 +28,11 @@ jobs:
 
     - name: Build a binary wheel and a source tarball
       run: |
-        cd package
         rm -rf build dist *.egg-info
         python -m build
 
     - name: Debug List directory contents
       run: |
-        cd package
         ls -la dist      
 
     # - name: Store the distribution packages
