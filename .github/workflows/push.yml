@@ -4,11 +4,11 @@ on:
   push:
     branches:
       - main
-      - update
-  pull_request:
-    branches:
-      - main
-      - update
+      - update_workflow
+  # pull_request:
+  #   branches:
+  #     - main
+  #     - update
   workflow_dispatch:
 
 jobs:
@@ -27,12 +27,6 @@ jobs:
           run: |
             python -m venv model_packaging/venv
             source model_packaging/venv/bin/activate
-            pip install --upgrade pip
-
-        - name: Create venv
-          run: |
-            python -m venv venv
-            . venv/bin/activate
             pip install --upgrade pip
 
         - name: Install tox
