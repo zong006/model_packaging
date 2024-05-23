@@ -3,11 +3,11 @@ name: CI/CD Pipeline (push)
 on:
   push:
     branches:
-      - main
+      - master
       - update_workflow
   pull_request:
     branches:
-      - main
+      - master
       - update
   workflow_dispatch:
 
