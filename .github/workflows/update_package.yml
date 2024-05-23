@@ -27,8 +27,7 @@ jobs:
       run: |
         cd package
         rm -rf build dist *.egg-info
-        echo "okkk"
-        python setup.py sdist bdist_wheel
+        python -m build
 
     - name: Debug List directory contents
       run: |

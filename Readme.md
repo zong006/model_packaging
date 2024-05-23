@@ -27,9 +27,9 @@ Contains and organizes the files for model packaging into PyPI.
 - go to classification_model/VERSION and update the version number. 
 - run "tox -e train". This runs the training pipeline and saves an updated model in a .pkl file with the 
 new version number according to classification_model/VERSION
-- clear the build cache by running rm -rf build dist *.egg-info
+- clear the build cache by running "rm -rf build dist *.egg-info"
 - upload to PyPI: 
-    - "python setup.py sdist bdist_wheel"
+    - "python -m build"
     - "twine upload dist/*"
 
 #### To Evaluate The Model
