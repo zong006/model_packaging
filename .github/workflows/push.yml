@@ -42,7 +42,7 @@ jobs:
             echo "KAGGLE_CONFIG_DIR is $KAGGLE_CONFIG_DIR"
 
             
-            kaggle competitions download titanic -p package/classification_model/datasets
+          # kaggle competitions download titanic -p package/classification_model/datasets
 
         # - name: Download dataset
         #   run: cd package/classification_model/datasets
