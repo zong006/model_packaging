@@ -87,4 +87,5 @@ There are two workflow files specifying jobs to be triggered by:
     - push changes to github 
     - release a new tag with version number according to the package/classification_model/VERSION file
         - triggers jobs defined in update_package.yml: build package -> publish to PyPI 
+    - lastly, (manual for now) train a new model with "tox -e train" and push the new trained model under package/classification_model/trained_models to Github. Then do a pull request to the master branch to merge it back. 
 
