@@ -38,7 +38,8 @@ jobs:
             mkdir -p /home/runner/tmp/.kaggle
             echo '{"username":"${{ secrets.KAGGLE_USERNAME }}","key":"${{ secrets.KAGGLE_KEY }}"}' > /home/runner/tmp/.kaggle/kaggle.json
             chmod 600 /home/runner/tmp/.kaggle/kaggle.json
-            cat /home/runner/tmp/.kaggle/kaggle.json
+            cat $GITHUB_ENV
+
           # echo "export KAGGLE_CONFIG_DIR=/home/runner/tmp/.kaggle" >> $GITHUB_ENV
           # echo "KAGGLE_CONFIG_DIR is ${{ env.KAGGLE_CONFIG_DIR }}"
 
