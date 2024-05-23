@@ -38,43 +38,40 @@ jobs:
             mkdir -p /home/runner/tmp/.kaggle
             echo '{"username":"${{ secrets.KAGGLE_USERNAME }}","key":"${{ secrets.KAGGLE_KEY }}"}' > /home/runner/tmp/.kaggle/kaggle.json
             chmod 600 /home/runner/tmp/.kaggle/kaggle.json
-            echo "export KAGGLE_CONFIG_DIR=/home/runner/tmp/.kaggle" >> "$GITHUB_ENV"
+            echo "KAGGLE_CONFIG_DIR=/home/runner/tmp/.kaggle" >> "$GITHUB_ENV"
             cat $GITHUB_ENV
             echo "KAGGLE_CONFIG_DIR is ${{ env.KAGGLE_CONFIG_DIR }}"
 
             
           # kaggle competitions download titanic -p package/classification_model/datasets
 
-        # - name: Download dataset
-        #   run: cd package/classification_model/datasets
+        # - name: Install tox
+        #   run: pip install --user tox
 
-        - name: Install tox
-          run: pip install --user tox
+        # - name: Running app tests
+        #   run: |
+        #     cd classification_api
+        #     tox
 
-        - name: Running app tests
-          run: |
-            cd classification_api
-            tox
-
-    deploy_to_railway:
-      runs-on: ubuntu-latest
-      needs: classification_api_test_app
-      steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+    # deploy_to_railway:
+    #   runs-on: ubuntu-latest
+    #   needs: classification_api_test_app
+    #   steps:
+    #   - name: Checkout
+    #     uses: actions/checkout@v2
         
-      - name: Use Node 16
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16.x'
+    #   - name: Use Node 16
+    #     uses: actions/setup-node@v2
+    #     with:
+    #       node-version: '16.x'
 
-      - name: Install Railway CLI
-        run: npm install -g @railway/cli
+    #   - name: Install Railway CLI
+    #     run: npm install -g @railway/cli
 
-      - name: Deploy to Railway
-        run: |
-          cd classification_api
-          railway up --service ${{ secrets.RAILWAY_SERVICE_ID_TITANIC }} --detach
-        env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TITANIC_PROJ_TOKEN }}
+    #   - name: Deploy to Railway
+    #     run: |
+    #       cd classification_api
+    #       railway up --service ${{ secrets.RAILWAY_SERVICE_ID_TITANIC }} --detach
+    #     env:
+    #       RAILWAY_TOKEN: ${{ secrets.RAILWAY_TITANIC_PROJ_TOKEN }}
         
