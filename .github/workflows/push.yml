@@ -32,11 +32,12 @@ jobs:
         - name: Download dataset
           run: | 
             pip install kaggle 
+            echo "export KAGGLE_CONFIG_DIR=/tmp/.kaggle" >> $GITHUB_ENV
             mkdir -p /tmp/.kaggle
             echo '{"username":"${{ secrets.KAGGLE_USERNAME }}","key":"${{ secrets.KAGGLE_KEY }}"}' > /tmp/.kaggle/kaggle.json
             chmod 600 /tmp/.kaggle/kaggle.json
             kaggle competitions download titanic -p package/classification_model/datasets
-            
+
         # - name: Download dataset
         #   run: cd package/classification_model/datasets
 
