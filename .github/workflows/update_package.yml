@@ -26,14 +26,15 @@ jobs:
     - name: Build a binary wheel and a source tarball
       run: |
         cd package
-        python -m build
+        rm -rf build dist *.egg-info
+        python setup.py sdist bdist_wheel
 
     - name: Debug List directory contents
       run: |
         ls -la dist      
 
-    - name: Store the distribution packages
-      uses: actions/upload-artifact@v3
-      with:
-        name: python-package-distributions
-        path: package/dist/
+    # - name: Store the distribution packages
+    #   uses: actions/upload-artifact@v3
+    #   with:
+    #     name: python-package-distributions
+    #     path: package/dist/
