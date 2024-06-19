@@ -1,4 +1,4 @@
-# File/Directory Descriptions (WIP)
+# File/Directory Descriptions 
 
 ## 1. package 
 Assignment Task for Section05 of "Deployment of Machine Learning Models" on Udemy.
@@ -33,7 +33,7 @@ new version number according to classification_model/VERSION
     - "twine upload dist/*"
 
 #### To Evaluate The Model
-- run "tox -e test_package". This evaluates if the model is working as intended as well as the accuracy using 
+- run "tox -e test_package". This evaluates if the model is working as intended, and evaluates the accuracy using 
 sklearn classification metrics.
 
 #### First Trial Run
